@@ -1,0 +1,142 @@
+/* colores
+    #ffb9c9 buttons and links
+    #ffcbd7 background
+    #ffdce4 background2
+    #ffeef2 background3
+    #ffffff text
+*/
+
+
+body {
+    background-color: #ffcbd7;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.text-color {
+    color: #ffffff;
+}
+
+
+.button {
+    background-color: #ffb9c9;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    /* shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+    width: 100%;
+    /* Ajusta el ancho al contenedor */
+    padding: 10px 15px;
+    /* Espaciado interno */
+    margin: 8px 0;
+    /* Margen entre los inputs */
+    border: 1px solid #ccc;
+    /* Borde fino y gris */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombra ligera */
+    font-size: 16px;
+    /* Tamaño de fuente */
+    color: #333;
+    /* Color del texto */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Animación */
+
+    font-family: 'Poppins', sans-serif;    
+}
+
+/* Estilo al enfocar el input */
+input[type="text"]:focus {
+    outline: none;
+    /* Elimina el contorno predeterminado */
+    border-color: #ffb9c9;
+    /* Cambia el color del borde al enfocar */
+    box-shadow: #ffb9c9;
+    /* Aumenta la sombra */
+}
+
+
+
+input[type="password"] {
+    width: 100%;
+    /* Ajusta el ancho al contenedor */
+    padding: 10px 15px;
+    /* Espaciado interno */
+    margin: 8px 0;
+    /* Margen entre los inputs */
+    border: 1px solid #ccc;
+    /* Borde fino y gris */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombra ligera */
+    font-size: 16px;
+    /* Tamaño de fuente */
+    color: #333;
+    /* Color del texto */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Animación */
+
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Estilo al enfocar el input */
+input[type="password"]:focus {
+    outline: none;
+    /* Elimina el contorno predeterminado */
+    border-color: #ffb9c9;
+    /* Cambia el color del borde al enfocar */
+    box-shadow: #ffb9c9;
+    /* Aumenta la sombra */
+}
+
+.swal2-confirm {
+    background-color: #ffb9c9 !important;
+    /* Cambia a tu color deseado */
+    color: #fff;
+    /* Cambia el color del texto */
+}
+
+.menu {
+    width: 60%;
+    max-width: 70%;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 15px 0px #ffffff;
+    padding: 10px;
+    align-items: center;
+    align-content: center;
+
+}
+
+/* estilos para las tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+th {
+
+    color: #ffb9c9;
+    font-weight: bold;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}

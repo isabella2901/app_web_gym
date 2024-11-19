@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="menu animate__animated animate__fadeIn">
+            <div style="width: 100%;">
+                <button class="button" onclick="window.history.back()">Volver</button>
+            </div>
+            <h1 style="color: #ffb9c9;" id="title"></h1>
+            <div style="display: flex; flex-direction: row; flex-wrap: wrap; width: 30%;">
+                <input type="text" placeholder="Username" id="username">
+                <input type="text" placeholder="Nombre" id="name">
+                <input type="password" placeholder="Contraseña" id="password">
+                <input type="text" placeholder="Telefono" id="phone">
+
+                <div style="width: 100%;display: flex; justify-content: center; margin-top: 10px;">
+                    <button class="button" onclick="saveOrUpdate()">Guardar</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+</body>
+</html>
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+</style>
+
+
+<script>
+
+    const params = new URLSearchParams(window.location.search);
+    const action =params.get("option");
+    const userId = params.get("userId");
+
+    async function loadData(){
+        if(action == "update"){
+
+            document.getElementById("title").innerText="Actualizar Usuario " + userId;
+
+            const urlSearch = "http://127.0.0.1:5000/users/"+userId
+
+            var request = await fetch(urlSearch, {
+                method: 'GET'
+            });
+
+            var response = await request.json();
+
+            console.log(response);
+
+            document.getElementById("username").value=response.id;
+            document.getElementById("name").value=response.name;
+            document.getElementById("password").value=response.password;
+            document.getElementById("phone").value=response.phone;
+
+            document.getElementById("username").disabled=true;
+
+        }else{
+            document.getElementById("title").innerText = "Crear Usuario";
+        }
+    }
+
+    async function saveOrUpdate(){
+
+        const username = document.getElementById("username").value;
+        const name = document.getElementById("name").value;
+        const password = document.getElementById("password").value;
+        const phone = document.getElementById("phone").value;
+        
+
+        if(action == "create"){
+            const urlSave = "http://127.0.0.1:5000/users"
+
+            var request = await fetch(urlSave, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "id":  username,
+                    "name": name,
+                    "phone": phone,
+                    "password": password
+                })
+            });
+            
+            window.location.href="../user-management/user-management.html";
+        } else {
+            const urlUpdate = "http://127.0.0.1:5000/users/"+userId
+
+            var request = await fetch(urlUpdate, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "name": name,
+                    "phone": phone,
+                    "password": password
+                })
+            });
+
+            
+            window.location.href = "../user-management/user-management.html";
+           
+        }
+
+    }
+
+    loadData();
+
+</script>

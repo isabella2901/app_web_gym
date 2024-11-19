@@ -1,0 +1,26 @@
+[
+    {
+        "name": "isabella otero",
+        "phone": "32345583162",
+        "password": "1234",
+        "id": "isabellaotero29"
+    },
+    {
+        "name": "david otero",
+        "phone": "3234558316",
+        "password": "123",
+        "id": "davidst"
+    },
+    {
+        "id": "prueba",
+        "name": "prueba1",
+        "phone": "3232889349",
+        "password": 123
+    },
+    {
+        "id": "david",
+        "name": "daviscito",
+        "phone": "3456789",
+        "password": "davicititito"
+    }
+]

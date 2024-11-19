@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="menu animate__animated animate__fadeIn">
+
+            <h1 style="color: #ffb9c9;" id="nameExercise"> </h1>
+
+
+            <div class="listEjercicios" id="listExercise">
+               
+            </div>
+
+            <div style="margin-top: 50px;">
+                <button onclick="window.location.href='../main-menu/menu.html'" class="button">Volver</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .listEjercicios {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        justify-content: center;
+    }
+</style>
+
+
+<script>
+
+    const exercises = JSON.parse(localStorage.getItem('exercises'));
+
+
+    function setTituloPantalla(){    
+        const params = new URLSearchParams(window.location.search);
+        const nameExercise = params.get('exercise');
+        document.getElementById('nameExercise').innerText = nameExercise;
+    }
+
+    function getAndShowExercises(){
+
+        // <button class="button" style="margin: 10px;">ds</button>
+
+        const listEjercicios = document.querySelector('.listEjercicios');
+
+        //ListExercises
+        
+        for (let exercise of exercises) {
+
+            let listExerecisesInScreen = document.getElementById("listExercise");
+            let button = document.createElement("button");
+            
+            button.innerText = exercise.nombre;
+            button.className = "button";
+            button.style.margin = "10px";
+
+
+
+            button.onclick = function(){
+                localStorage.setItem('exercise', JSON.stringify(exercise));
+                window.location.href = `../exercise/exercise.html`;
+            }
+
+            listExerecisesInScreen.appendChild(button);
+        }
+
+    }
+
+   
+
+
+    setTituloPantalla();
+    getAndShowExercises();
+</script>

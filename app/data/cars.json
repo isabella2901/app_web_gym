@@ -1,0 +1,34 @@
+[
+    {
+        "idCar": 1,
+        "make": "Toyota",
+        "model": "Corolla",
+        "year": 2018,
+        "color": "White",
+        "price": 18000
+    },
+    {
+        "idCar": 2,
+        "make": "Honda",
+        "model": "Civic",
+        "year": 2017,
+        "color": "Black",
+        "price": 17000
+    },
+    {
+        "idCar": 3,
+        "make": "Ford",
+        "model": "Fusion",
+        "year": 2016,
+        "color": "Red",
+        "price": 16000
+    },
+    {
+        "idCar": 4,
+        "make": "Chevrolet",
+        "model": "Malibu",
+        "year": 2015,
+        "color": "Blue",
+        "price": 15000
+    }
+]

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="divLeft">
+            <div style="width: 30%;">
+
+                <button class="button" onclick="window.history.back()">Volver</button>
+            </div>
+            
+            <h1 style="color: #FFFFFF;" id="nameExercise"> </h1>
+            <span style="color: #FFFFFF; font-size: 20px;" id="descExercise"></span>
+            <p style="color: #FFFFFF;font-size: 20px; text-decoration: overline;" >Comencemos:</p>
+            <p style="color:#FFFFFF;font-size:20px" id="serieCountText"></p>
+            <p style="color:#FFFFFF;font-size:20px" id="repeatsPerSerie"></p>
+
+            <!-- botones de accion de contador de tiempo -->
+            <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 20px;">
+                <p style="color: #FFFFFF;font-size:20px">Tiempo restante: </p>
+                <p style="color:#FFFFFF;margin-left: 10px;font-size:20px" id="timeLeft"></p>
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 20px;">
+                <button style="" class="button" onclick="startTimer()">Iniciar / Pausar</button>
+            </div>
+
+        </div>
+
+        <div class="divRight">
+            <div class="frameImg">
+                <img src="" style="width: 100%; height: 50vh;" alt="" srcset="" id="imgExercise">
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <button class="button" style="width: 40%;" onclick="previousExercise()">Anterior Ejercicio</button>
+                <button class="button" style="width: 40%;"onclick="nextExercise()">Siguiente Ejercicio</button>
+            </div>
+        </div>
+
+    </div>
+
+    
+</body>
+</html>
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .divLeft{
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        justify-content: center;
+        padding-left: 30px;
+
+    }
+    .divRight{
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+
+    .frameImg{
+        width: 80%;
+        background-color: #FFFFFF;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0px 0px 15px 0px #ffffff;
+        padding: 10px;
+        align-items: center;
+        align-content: center;
+    }
+</style>
+
+<script>
+
+    var exercise = JSON.parse(localStorage.getItem('exercise')); // Se obtiene el ejercicio seleccionado
+    const listExercises = JSON.parse(localStorage.getItem('exercises')); // Se obtiene la lista de ejercicios
+    
+    var timerExercise = null;
+    var actualSerie = 1; // se inicia en 0
+    var seriesLimit = 0; // se inicia en 0
+    var timeLeft = 0; // se inicia en 0
+    
+    var timerStarted = false; // se inicia en false
+
+    function setNameDescriptionExercise() {
+
+        document.getElementById('nameExercise').innerText = exercise.nombre;
+        document.getElementById('descExercise').innerText = exercise.descripcion;
+        document.getElementById('imgExercise').src = exercise.imagen;
+        document.getElementById('serieCountText').innerText = `Serie ${actualSerie} de ${exercise.series}`;
+        document.getElementById('repeatsPerSerie').innerText = `Repeticiones por serie: ${exercise.repeticiones_por_serie}`;
+        document.getElementById("timeLeft").textContent = exercise.tiempo;
+
+        seriesLimit = exercise.repeticiones_por_serie;
+        timeleft = exercise.tiempo;
+
+    }
+
+    //Funcion que va a manejar el tiempo de cada ejercicio
+    function startTimer() {
+
+        timerStarted = !timerStarted;
+
+        if(timerStarted){
+            timerExercise = setInterval(function () {
+                timeleft--;
+                document.getElementById("timeLeft").textContent = timeleft;
+                if (timeleft <= 0) {
+                    clearInterval(timerExercise);
+                    timeleft = exercise.tiempo;
+                    if (actualSerie >= exercise.series) {
+                        actualSerie++;
+                        document.getElementById('serieCountText').innerText = `Serie ${actualSerie } de ${exercise.series}`;
+                        timeleft = exercise.tiempo;
+                        document.getElementById("timeLeft").textContent = timeleft;
+                        Swal.fire({
+                            title: "Buen trabajo!",
+                            text: "Has finalizado el ejercicio!",
+                            icon: "success"
+                        });
+                        nextExercise();
+                    } else {
+                        actualSerie++;
+                        document.getElementById('serieCountText').innerText = `Serie ${actualSerie} de ${exercise.series}`;
+                        timeleft = exercise.tiempo;
+                        document.getElementById("timeLeft").textContent = timeleft;
+                    }
+                     timerStarted = !timerStarted;
+                }
+            }, 1000);
+        }else{
+            
+            Swal.fire({
+                title: "Pausa",
+                text: "Has pausado el ejercicio!",
+                icon: "info"
+            });
+
+            clearInterval(timerExercise);
+            
+            
+        }
+
+        
+    }
+
+
+    setNameDescriptionExercise();
+
+
+
+    //FUNCIONES QUE MANEJAN EL CAMBIO DE EJERCICIO
+
+    function nextExercise(){
+
+
+        var actual = exercise;
+
+        for(i= 0; i < listExercises.length; i++){
+            if(listExercises[i].id === actual.id){
+                if(i == listExercises.length - 1){
+                    actual = listExercises[0];
+                    break
+                }else{
+                    actual = listExercises[i + 1];
+                    break
+                }
+            }
+        }
+        exercise = actual;
+        
+        //Todas las variables de este script las dejo en su valor inicial
+        clearInterval(timerExercise);
+        timerExercise = null;
+        actualSerie = 1; // se inicia en 0
+        seriesLimit = 0; // se inicia en 0
+        timeLeft = 0; // se inicia en 0
+        timerStarted = false; // se inicia en false
+        //Llamo la funcin que setea los valores del ejercicio
+        setNameDescriptionExercise();
+
+
+    }
+
+    function previousExercise(){
+            
+            var actual = exercise;
+    
+            for(i= 0; i < listExercises.length; i++){
+                if(listExercises[i].id === actual.id){
+                    if(i == 0){
+                        actual = listExercises[listExercises.length - 1];
+                        break
+                    }else{
+                        actual = listExercises[i - 1];
+                        break
+                    }
+                }
+            }
+
+            exercise = actual;
+            //Todas las variables de este script las dejo en su valor inicial
+            clearInterval(timerExercise);
+            timerExercise = null;
+            actualSerie = 1; // se inicia en 0
+            seriesLimit = 0; // se inicia en 0
+            timeLeft = 0; // se inicia en 0
+            timerStarted = false; // se inicia en false
+            //Llamo la funcin que setea los valores del ejercicio
+            setNameDescriptionExercise();
+
+    }
+
+
+
+</script>

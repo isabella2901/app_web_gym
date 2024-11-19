@@ -1,0 +1,312 @@
+{
+    "abdomen": [
+        {
+            "id":1,
+            "nombre": "Crunch abdominal",
+            "imagen": "https://i.pinimg.com/originals/53/05/a5/5305a5d4e53c24604ccdc1c1ba564561.gif",
+            "orden": 1,
+            "tiempo": 10,
+            "series": 2,
+            "repeticiones_por_serie": 12,
+            "descripcion": "Acostado boca arriba, eleva el torso hacia las rodillas mientras mantienes las piernas dobladas."
+        },
+        {
+            "id":2,
+            "nombre": "Elevación de piernas",
+            "imagen": "https://i.pinimg.com/originals/c0/d3/c9/c0d3c948ede881f235ee6e6ea97e57b4.gif",
+            "orden": 2,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Acostado boca arriba, levanta las piernas estiradas hacia arriba hasta formar un ángulo recto con el cuerpo."
+        },
+        {
+            "id": 3,
+            "nombre": "Mountain climbers",
+            "imagen": "https://i.pinimg.com/originals/48/ab/04/48ab04dcfc4269b59c363e7ce53a3c7f.gif",
+            "orden": 3,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "En posición de plancha, lleva las rodillas hacia el pecho rápidamente, alternando entre ambas piernas."
+        },
+        {
+            "id": 4,
+            "nombre": "Plancha con rotación",
+            "imagen": "https://i.pinimg.com/originals/82/ac/f3/82acf346b871a0ce8f97c0de7af6fcae.gif",
+            "orden": 4,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Desde la posición de plancha, rota el torso hacia un lado y extiende el brazo hacia el techo. Alterna lados."
+        },
+        {
+            "id": 5,
+            "nombre": "Plancha sobre un pie",
+            "imagen": "https://i.pinimg.com/originals/e1/4c/9c/e14c9c366f93f2901e848d1f00b4be11.gif",
+            "orden": 5,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "En posición de plancha, levanta una pierna manteniendo el cuerpo estable."
+        },
+        {
+            "id": 6,
+            "nombre": "Plancha sostenida por un minuto",
+            "imagen": "https://i.pinimg.com/564x/c3/a2/ab/c3a2ab2eeb313fed71a4c30112dbd6c2.jpg",
+            "orden": 6,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Mantén la posición de plancha durante un minuto."
+        }
+    ],
+    "piernas": [
+        {
+            "id": 7,
+            "nombre": "Sentadilla",
+            "imagen": "https://i.pinimg.com/originals/6e/96/43/6e9643c4cc8664470cd8ca1e8e59e6fc.gif",
+            "orden": 1,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Baja las caderas como si te fueras a sentar en una silla, manteniendo el torso recto y los pies separados a la altura de los hombros."
+        },
+        {
+            "id": 8,
+            "nombre": "Peso muerto",
+            "imagen": "https://i.pinimg.com/originals/c4/15/13/c41513afb3abb500d59dfae4a5ebbf33.gif",
+            "orden": 2,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "De pie, con una barra o mancuerna en las manos, inclina el torso hacia adelante desde las caderas, manteniendo la espalda recta y las rodillas ligeramente flexionadas."
+        },
+        {
+            "id": 9,
+            "nombre": "Puente de glúteos",
+            "imagen": "https://i.pinimg.com/originals/56/b3/d1/56b3d18de155da21fcb3300de9ecadbe.gif",
+            "orden": 3,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Acostado boca arriba, flexiona las rodillas y eleva las caderas hasta formar una línea recta entre hombros y rodillas, apretando los glúteos en la parte superior. "
+        },
+        {
+            "id": 10,
+            "nombre": "Sentadilla búlgara",
+            "imagen": "https://i.pinimg.com/originals/e9/90/2b/e9902beff1f23a4b3e4712639fb53f7b.gif",
+            "orden": 4,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Con un pie apoyado en un banco detrás de ti, realiza una sentadilla manteniendo el torso recto. "
+        },
+        {
+            "id": 11,
+            "nombre": "Sentadilla sostenida",
+            "imagen": "https://i.pinimg.com/originals/87/12/07/871207e483b91f5e790da282f81f3b70.gif",
+            "orden": 5,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Baja en una sentadilla y mantén la posición durante 30 segundos a 1 minuto, manteniendo los muslos paralelos al suelo. "
+        },
+        {
+            "id": 12,
+            "nombre": "Sentadillas laterales",
+            "imagen": "https://i.pinimg.com/originals/3e/7a/76/3e7a76ff9cac8b0dbbd658b18e69d029.gif",
+            "orden": 6,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Da un paso lateral amplio y baja en una sentadilla, manteniendo una pierna extendida."
+        }
+    ],
+    "espalda": [
+        {
+            "id": 13,
+            "nombre": "Superman twist",
+            "imagen": "https://i.pinimg.com/originals/e7/67/01/e767015e4c2c6e9e3dfb7fa68621da0d.gif",
+            "orden": 1,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Sube y baja tu cuerpo colgado de una barra, llevando la barbilla por encima de la barra en cada repetición."
+        },
+        {
+            "id": 14,
+            "nombre": "Plancha en T",
+            "imagen": "https://i.pinimg.com/originals/bc/9b/7e/bc9b7e80d0e37aee17a8ff995df7ea43.gif",
+            "orden": 2,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Desde la posición de plancha, rota el cuerpo hacia un lado, extendiendo un brazo hacia el techo, formando una T con el cuerpo. "
+        },
+        {
+            "id": 15,
+            "nombre": "Remo con mancuerna",
+            "imagen": "https://i.pinimg.com/originals/52/2b/db/522bdbd001e5f81ddb3821260d3d6742.gif",
+            "orden": 3,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Inclínate hacia adelante desde la cintura y, con una mancuerna en una mano, tira del peso hacia tu torso. "
+        },
+        {
+            "id": 16,    
+            "nombre": "Sentadilla con press",
+            "imagen": "https://i.pinimg.com/originals/83/d0/6c/83d06c796cda6431fdb0f8227c106311.gif",
+            "orden": 4,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Sentado en una máquina de remo, tira de la barra hacia tu torso, llevando los codos hacia atrás. "
+        },
+        {
+            "id": 17,
+            "nombre": "Remo invertido",
+            "imagen": "https://i.pinimg.com/originals/01/7d/36/017d367df320f64df362238e5cf7d893.gif",
+            "orden": 5,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Colgado de una barra con los pies apoyados en el suelo, tira del torso hacia la barra, manteniendo el cuerpo recto.  "
+        },
+        {
+            "id": 18,
+            "nombre": "Renegade Rows",
+            "imagen": "https://i.pinimg.com/originals/01/7d/36/017d367df320f64df362238e5cf7d893.gif",
+            "orden": 6,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "En posición de plancha con mancuernas, tira de una mancuerna hacia el torso mientras mantienes la posición de plancha. "
+        }
+    ],
+    "brazos": [
+        {
+            "id": 19,
+            "nombre": "Curl de bíceps",
+            "imagen": "https://i.pinimg.com/originals/ad/fc/aa/adfcaa7664012b9d164818fc98db1f49.gif",
+            "orden": 1,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Con mancuernas o una barra, flexiona los codos para levantar el peso hacia los hombros.  "
+        },
+        {
+            "id": 20,
+            "nombre": "Extensión de tríceps",
+            "imagen": "https://i.pinimg.com/originals/f0/56/00/f056008eb27383d63a6472bfdcc10767.gif",
+            "orden": 2,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Con una mancuerna o una barra, extiende los codos por encima de la cabeza, luego baja lentamente."
+        },
+        {
+            "id": 21,
+            "nombre": "Flexiones de pecho",
+            "imagen": "https://i.pinimg.com/originals/86/61/63/866163e75da8aae69abfda9e30c612d7.gif",
+            "orden": 3,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Desde la posición de plancha, baja el pecho hacia el suelo y luego empuja hacia arriba."
+        },
+        {
+            "id": 22,
+            "nombre": "Elevación lateral",
+            "imagen": "https://i.pinimg.com/originals/af/f1/b7/aff1b7bf1dea681c9f494cbeb95b1234.gif",
+            "orden": 4,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "con dos mancuernas y de pie inclínate y levanta las mancuernas lateralmente hasta alcanzar la misma altura de los hombros"
+        },
+        {
+            "id": 23,    
+            "nombre": "Press de hombro",
+            "imagen": "https://i.pinimg.com/originals/84/8c/5f/848c5f4d582dfbf8bf897012adb8749a.gif",
+            "orden": 5,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Con mancuernas o una barra, empuja el peso desde los hombros hacia arriba hasta extender los brazos completamente."
+        },
+        {
+            "id": 24,
+            "nombre": "Tríceps",
+            "imagen": "https://i.pinimg.com/originals/a0/3c/46/a03c462fb38362de275a03eb6ecec075.gif",
+            "orden": 6,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Realiza flexiones apoyando las manos en un banco, con los codos hacia atrás para trabajar el tríceps. "
+        }
+    ],
+    "Glúteos": [
+        {
+            "id": 25,
+            "nombre": "Abducción de cadera",
+            "imagen": "https://i.pinimg.com/originals/a1/13/4e/a1134e8ddd0ab74a99a60b12528dbdab.gif",
+            "orden": 1,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Acuéstate de lado y levanta la pierna superior lo más alto posible, manteniéndola recta. "
+        },
+        {
+            "id": 26,
+            "nombre": "Patada trasera en posición de gateo",
+            "imagen": "https://i.pinimg.com/originals/1d/0f/e7/1d0fe72e82cf16ffc4dd08d4bbc19ce5.gif",
+            "orden": 2,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "En posición de cuatro patas, levanta una pierna flexionada hacia arriba. "
+        },
+        {
+            "id": 27,
+            "nombre": "Puente de rana",
+            "imagen": "https://i.pinimg.com/originals/7c/bb/a7/7cbba77129b922a98306af6e3063a953.gif",
+            "orden": 3,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Sentado en una máquina de prensa, empuja el peso hacia adelante con las piernas.   "
+        },
+        {
+            "id": 28,
+            "nombre": "Sentadilla con peso",
+            "imagen": "https://i.pinimg.com/originals/73/93/eb/7393eb72c65472e46c213e2b99c10992.gif",
+            "orden": 4,
+            "tiempo": 10,
+            "series": 2,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Realiza una sentadilla manteniendo una barra o mancuernas a la altura de los hombros. "
+        },
+        {
+            "id": 29,    
+            "nombre": "Step up",
+            "imagen": "https://i.pinimg.com/originals/f8/63/f4/f863f4ca6f55b54ed1fd0999f6f929f4.gif",
+            "orden": 5,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Sube a un banco o caja con una pierna y luego baja lentamente. Alterna entre ambas piernas. "
+        },
+        {
+            "id": 30,
+            "nombre": "Sumo squat",
+            "imagen": "https://i.pinimg.com/originals/b1/08/36/b1083670d171f4e6b23780847b90e518.gif",
+            "orden": 5,
+            "tiempo": 10,
+            "series": 1,
+            "repeticiones_por_serie": 10,
+            "descripcion": "Sube a un banco o caja con una pierna y luego baja lentamente. Alterna entre ambas piernas. "
+        }
+    ]
+}

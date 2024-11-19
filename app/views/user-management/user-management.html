@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="menu animate__animated animate__fadeIn">
+            <div style="width: 100%;">
+                <button class="button" onclick="window.location.href='../main-menu/menu.html'">Volver</button>
+            </div>
+            <h1 style="color: #ffb9c9;">Gestión de usuarios</h1>
+
+            <div style="display: flex; width: 100%;flex-direction: row-reverse;">
+                <button class="button" onclick="goToCreateUser()">Crear usuario</button>
+            </div>
+
+            <table id="tableUsers">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Telefono</th>
+                    <th>Acción</th>
+                </tr>
+            </table>
+
+        </div>
+    
+    </div>
+    
+</body>
+</html>
+
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+</style>
+
+
+<script>
+
+    var users = [];
+
+    async function getAllUsers(){
+
+
+        try{
+            const url = "http://127.0.0.1:5000/users";;
+            const request = await fetch(url);
+    
+            const response = await request.json();
+
+            users = response;
+
+
+            //meter los usuarios a la tabla
+            const table = document.getElementById('tableUsers');
+
+            users.forEach(user => {
+                const tr = document.createElement('tr');
+                const tdId = document.createElement('td');
+                const tdName = document.createElement('td');
+                const tdPhone = document.createElement('td');
+                const tdAction = document.createElement('td');
+                tdId.innerHTML = user.id;
+                tdName.innerHTML = user.name;
+                tdPhone.innerHTML = user.phone;
+                tdAction.innerHTML = `
+                    <button class="button" onClick="goToUpdateUser('${user.id}')">Editar</button> 
+                    <button class="button" onClick="deleteUser('${user.id}')">Eliminar</button>
+                `;
+
+                tr.appendChild(tdId);
+                tr.appendChild(tdName);
+                tr.appendChild(tdPhone);
+                tr.appendChild(tdAction);
+
+                table.appendChild(tr);
+            });
+
+        }catch(error){
+            console.log('error', error)
+        }
+
+
+    }
+
+
+    getAllUsers();
+
+    function goToCreateUser(){
+        window.location.href = '../create-update-user/create-update-user.html?option=create';
+    }
+
+    function goToUpdateUser(idUser) {
+        window.location.href = '../create-update-user/create-update-user.html?option=update&userId=' + idUser;
+    }
+
+    async function deleteUser(idUser){
+        console.log('delete user', idUser);
+
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ffb9c9',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminarlo!'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+                const url="http://127.0.0.1:5000/users/" + idUser;
+
+                const request = await fetch(url, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const response = await request.json();
+
+
+                Swal.fire(
+                    'Eliminado!',
+                    'El usuario ha sido eliminado.',
+                    'success'
+                )
+            }
+            cleanUsers();
+            getAllUsers();
+        })
+    }
+
+
+    function cleanUsers(){
+
+        const table = document.getElementById('tableUsers');
+        table.innerHTML = `
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Acción</th>
+            </tr>
+        `;
+    }
+
+</script>

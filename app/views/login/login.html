@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+    <!-- Se meten la fuente que se quiere usar por medio de la siguiente linea -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Se carga el archivo de estilos principal -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Con la siguiente se va a poder usar los mensajes de alerta bonitos -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Con la siguiente puedo usar clases de css para las animaciones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+</head>
+<body>
+    <div class="container animate__animated animate__fadeIn">
+        <div class="formulario">
+            <div class="text-color" style="display: flex-wrap; justify-content: center; align-items: center; font-size: 30px;"> Bienvenido a 
+                <p style="color: #ffeef2"> &nbsp MyGymApp</p>
+            </div>
+            
+            <input type="text" name="username" id="username" placeholder="Usuario" required>
+            <input type="password" name="password" id="password" placeholder="Contraseña" required>
+            <button type="button" class="button" onclick="login()">Iniciar Sesión</button>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .formulario {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border-radius: 5px;
+        align-items: center;
+        width: 30%;
+
+    }
+
+</style>
+
+<script>
+
+    // && es un "Y" lógico
+    // || es un "O" lógico
+
+    async function login(){
+
+
+        var username=document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        if (username == "" || password == ""){
+            Swal.fire({
+                title: 'Error!',
+                text: 'Por favor llene todos los campos',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+            return;
+        }
+
+        const url = 'http://127.0.0.1:5000/users/'+username;
+
+        // fetch es para hacer las peticiones a mi backend (Flask)
+        try{
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const data = await response.json();
+
+            if(data.password == password){
+                window.location.href = "../main-menu/menu.html"
+            }else{
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Contraseña incorrecta',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+            }
+        } catch(error){
+            Swal.fire({
+                title: 'Error!',
+                text: 'No se encontró el usuario',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+        }
+
+    
+
+   
+    }
+
+
+</script>

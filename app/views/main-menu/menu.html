@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="menu animate__animated animate__fadeIn">
+            <h1 style="color: #ffb9c9;">Menu principal</h1>
+
+            <div class="list-elements">
+            </div>
+
+            <div style="margin-top: 50px;">
+
+                <button onclick="window.location.href='../login/login.html'" class="button">Cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+
+    .list-elements {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+
+
+    }
+    .exercise {
+        background-color: #ffb9c9;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 0px 10px 0px #ffcbd7;
+        justify-content: center;
+        width:100%;
+        cursor:pointer;
+        align-content: center;
+
+    }
+</style>
+
+
+<script>
+    var exercises = {};
+
+    async function loadExercises() {
+        const url = 'http://127.0.0.1:5000/exercises';
+
+        try {
+            const request = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const response = await request.json();
+            exercises = response;
+
+            for(let exercise in response){
+
+                let name = exercise;
+
+                const element = document.createElement('div');
+
+                element.style.padding = '10px';
+                element.style.width = '33%';
+                element.innerHTML = `
+                    <div class="exercise" onClick="selectExercise('${name}')">
+                        <h2 style="color:#ffffff" >${exercise}</h2>
+                    </div>
+                `;
+                document.querySelector('.list-elements').appendChild(element);
+            }
+            // agregar ejercicio random
+            const element = document.createElement('div');
+
+
+            element.style.padding = '10px';
+            element.style.width = '33%';
+
+            element.innerHTML = `
+                <div class="exercise" onClick="selectExercise('random')">
+                    <h2 style="color:#ffffff"  >Random</h2>
+                </div>
+                `;
+            document.querySelector('.list-elements').appendChild(element);
+
+
+            //Agregar elemento de gestion de usuarios
+            
+            const elementUserManagement = document.createElement('div');
+            
+
+            elementUserManagement.style.padding = '10px';
+            elementUserManagement.style.width = '33%';
+
+            elementUserManagement.innerHTML = `
+                <div class="exercise" onClick="goToUserManagement()">
+                    <h2 style="color:#ffffff"  >Gestión de usuarios</h2>
+                </div>
+                `;
+            document.querySelector('.list-elements').appendChild(elementUserManagement);
+
+         
+        } catch(error) {
+            console.error(error);
+        }
+
+    }
+
+    function selectExercise(idExercise){
+        //Valido si es random o es un ejercicio del json para obtener el listado de ejercicios a presentar
+        if(idExercise == "random"){
+            //Recorrer el json de ejercicios y obtener uno random por cada tipo de ejercicio
+            let exerciseList = [];
+            for(let exercise in exercises){
+                let max = exercises[exercise].length;
+                let randomExercise = Math.floor(Math.random() * max);
+                let listExercisesInCategory = exercises[exercise];
+                exerciseList.push(listExercisesInCategory[randomExercise]);
+            }
+            localStorage.setItem("exercises", JSON.stringify(exerciseList));
+
+            
+        }else{
+            let listExercisesInCategory = exercises[idExercise];
+            localStorage.setItem("exercises", JSON.stringify(listExercisesInCategory));
+
+        }
+        window.location.href = "../menu-exercise/menu-exercise.html?exercise="+idExercise;
+    }
+
+    function goToUserManagement(){
+        window.location.href = "../user-management/user-management.html";
+    }
+
+    loadExercises();
+
+</script>
