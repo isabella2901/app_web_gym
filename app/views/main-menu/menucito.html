@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="menu" id="menu">
+
+
+    </div>
+</body>
+</html>
+
+
+<script>
+
+    var ejercicios = {}
+
+    async function cargarDatos(){
+
+        var url = "http://127.0.0.1:5000/exercises"
+
+        var request = await fetch(url, {
+            method:'GET'
+        })
+
+        var response = await request.json()
+
+        ejercicios = response
+
+        for(var ejercicio in response ){
+
+            var elementoNuevo = document.createElement('div')
+
+            
+            elementoNuevo.innerHTML =`<div onClick="seleccionDeEjercicio('${ejercicio}')">${ejercicio}</div>`
+
+            document.querySelector(".menu").appendChild(elementoNuevo)
+
+        }
+
+        var elementoNuevo = document.createElement('div')
+
+            
+        elementoNuevo.innerHTML =`<div onClick="seleccionDeEjercicio('Random')">Random</div>`
+
+        document.querySelector(".menu").appendChild(elementoNuevo)
+        
+
+        var elementoGestion =document.createElement('div')
+        elementoGestion.innerHTML=`<div onClick="irAGestionDeIsabella()">Gestion de isabella</div>`
+        document.querySelector(".menu").appendChild(elementoGestion)
+
+
+
+
+    }
+
+
+    cargarDatos()
+
+    function seleccionDeEjercicio(id){
+
+        if(id == "Random"){
+            
+            var nuevoListadoEjercicios = []
+            for(var ejercicio in ejercicios){
+
+                var posicionMaxima = ejercicios[ejercicio].length
+                var posicionAleatoria = Math.floor(Math.random() * posicionMaxima)
+
+                var listadoEjercicioActual = ejercicios[ejercicio]
+
+                var ejercicioEscogidoRandom = listadoEjercicioActual[posicionAleatoria]
+
+                nuevoListadoEjercicios.push(ejercicioEscogidoRandom)
+
+                var listadoComoJson = JSON.stringify(nuevoListadoEjercicios)
+
+                localStorage.setItem("ejerciciosSi",listadoComoJson)
+
+                window.location.href = "../menu-exercise/menu-ejercicio.html?nombre="+id
+
+            }
+
+
+        } else {
+
+
+            var listadoEjercicios = ejercicios[id]
+            var listadoComoJson = JSON.stringify(listadoEjercicios)
+            localStorage.setItem("ejerciciosSi",listadoComoJson)
+
+            window.location.href = "../menu-exercise/menu-ejercicio.html?nombre="+id
+
+        }
+
+
+
+    }
+
+
+    function irAGestionDeIsabella(){
+        window.location.href = "../user-management/user-management.html"
+    }
+
+
+
+
+</script>

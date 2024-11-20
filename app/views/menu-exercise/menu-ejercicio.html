@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 id="nombreEjercicio"></h1>
+    <div class="listadito"> 
+
+    </div>
+
+
+
+    
+</body>
+</html>
+
+
+<script>
+
+    const params = new URLSearchParams(window.location.search);
+    const nombreEjercicio = params.get('nombre');
+    document.getElementById("nombreEjercicio").innerText=nombreEjercicio
+
+    var ejercicios = localStorage.getItem("ejerciciosSi")
+    var ejerciciosComoJson = JSON.parse(ejercicios)
+    console.log(ejerciciosComoJson)
+
+
+    function cargarInformacion(){
+        for(var i = 0; i<ejerciciosComoJson.length; i++){
+            var ejercicioActual = ejerciciosComoJson[i]
+            console.log(ejerciciosComoJson[i])
+            var nuevoElemento = document.createElement("div")
+            var nombreEjercicio = ejercicioActual.nombre
+            nuevoElemento.innerHTML= nombreEjercicio
+            document.querySelector(".listadito").appendChild(nuevoElemento)
+        } 
+    }
+cargarInformacion()
+
+
+
+</script>
